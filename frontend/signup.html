@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create account · Roamly</title><meta name="robots" content="noindex"><meta name="theme-color" content="#f4eee1">
+<link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
+<script src="/js/theme.js?v=3"></script>
+<link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3">
+</head><body data-page="signup">
+<a class="skip" href="#main">Skip to form</a>
+<div class="auth">
+ <aside class="auth-art" aria-hidden="true"><div data-art="Santorini|beach"></div><div class="stamp"><div>Est.<b>2026</b>Europe</div></div>
+  <div class="cap"><span class="eyebrow">Roamly</span><h2>Where to next?</h2><p>Tell us your month and your budget. We'll find the places that fit and plan the days.</p></div></aside>
+ <div class="auth-main">
+  <div class="top"><a class="logo" href="/" data-logo></a><button class="icon-btn" data-theme-toggle></button></div>
+  <main id="main" class="auth-box">
+    <h1>Create your account</h1><p class="sub">Free, and it takes under a minute.</p>
+    <form id="form" novalidate>
+     <div class="form-err" id="formErr" role="alert" hidden></div>
+     <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required maxlength="60" aria-describedby="e-name" autofocus><div class="err" id="e-name" role="alert"></div></div>
+     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email"><div class="err" id="e-email" role="alert"></div></div>
+     <div class="field"><label for="password">Password</label><div class="pwrap"><input id="password" name="password" type="password" autocomplete="new-password" required aria-describedby="e-password"><button type="button" data-toggle="password" aria-label="Show password"></button></div><div class="meter" id="meter" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="hint" id="strength">At least 8 characters. A short phrase works well.</div><div class="err" id="e-password" role="alert"></div></div>
+     <button class="btn btn-primary btn-block" id="submit">Create account</button>
+     <p class="hint" style="margin-top:12px">By creating an account you agree to how we handle your data, described on the <a href="/privacy.html">privacy page</a>.</p>
+    </form>
+    <p class="alt">Already have an account? <a href="/login.html">Log in</a></p>
+  </main>
+  <p class="small muted" style="text-align:center">Class project &middot; <a href="/privacy.html">Privacy</a></p>
+ </div>
+</div>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script><script src="/js/auth.js?v=3"></script>
+</body></html>

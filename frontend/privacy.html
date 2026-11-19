@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Roamly</title><meta name="theme-color" content="#f4eee1"><link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
+<script src="/js/theme.js?v=3"></script><link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3">
+</head><body>
+<div class="wrap"><header class="nav"><a class="logo" href="/" data-logo></a><div class="right"><button class="icon-btn" data-theme-toggle></button><a class="btn btn-sm btn-primary" href="/signup.html">Get started</a></div></header></div>
+<main class="doc">
+ <span class="eyebrow">Privacy</span><h1>What we store, and why.</h1>
+ <p>Roamly is a class project run by its builders. This page says in plain words what the app keeps and what leaves your device. If you host your own copy, you are the one responsible for that data, so adjust this page to match.</p>
+ <h2>What is stored</h2>
+ <ul><li><b>Account:</b> your name, email and a salted hash of your password (never the password itself).</li>
+ <li><b>Sessions:</b> one cookie (HttpOnly, same-site) keeps you logged in. Signing up, or logging in with "Keep me logged in" ticked (the default), lasts 30 days. Unticked, it ends when you close the browser and expires after 1 day. Only a hash of its value is stored on the server. It is the only cookie we set.</li>
+ <li><b>On your device:</b> your browser's local storage remembers a chat id, your planning mode, currency, exchange rate, home airport and theme. This never leaves your browser except the chat id, which is sent with your messages so the chat keeps its memory.</li>
+ <li><b>Your trips:</b> chat history and preferences, saved trips with notes, and links you chose to share.</li>
+ <li><b>Feedback:</b> your thumbs-up and thumbs-down together with the trip they were about (type, budget, month, length). This is used to retrain the ranking model.</li>
+ <li><b>Usage counts:</b> whether you used chat or guided mode, so we can see which one people prefer. No page tracking, no analytics services.</li></ul>
+ <h2>What leaves the app</h2>
+ <ul><li><b>Maps:</b> your browser loads map tiles from CARTO (built on OpenStreetMap data), which sees your IP address and the area you view.</li>
+ <li><b>Road routes:</b> the coordinates of a day's stops are sent to the public OSRM demo server.</li>
+ <li><b>Weather:</b> the server asks Open-Meteo for the city's weather (city coordinates only, nothing about you). Exchange rates come from open.er-api.com the same way.</li>
+ <li><b>Language model (optional):</b> if the person running the server set an API key (for example Groq, OpenRouter, Anthropic, or a model running on their own machine), your chat messages are sent to that provider to be understood. Without a key nothing is sent.</li>
+ <li><b>Password-reset email:</b> if you use "Forgot password", your email address and the reset link go through the mail server the host configured. Without one, the link is only printed in the server console.</li>
+ <li><b>Flights, hotels and map buttons</b> open Google Flights, Booking.com and Google Maps in a new tab only when you click them.</li>
+ <li><b>Fonts and scripts</b> are served from this site. Nothing is loaded from Google Fonts or other trackers.</li>
+ <li><b>Shared links</b> are public: anyone with the link can see that plan (destination, stops, budget), but not your name or email.</li></ul>
+ <h2>Your choices</h2>
+ <p>Once you are logged in, open <b>Settings</b> in the app (your name at the top right) to download everything we store about you as a file, change your password, or delete your account. Deleting removes your account, trips, chat, feedback and share links. Feedback already used to retrain the model cannot be un-learned, but the stored rows are deleted.</p>
+ <h2>Security</h2>
+ <p>Passwords are hashed with PBKDF2, logins are rate-limited, sessions expire, and reset links work once for an hour. No system is perfectly secure, so please do not reuse a password from somewhere important.</p>
+ <h2>Accuracy</h2>
+ <p>Prices, opening details and map pins are estimates and may be wrong. Check anything important before you book or travel.</p>
+</main>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script>
+<script>$$("[data-logo]").forEach(l=>l.innerHTML=Art.brand());bindThemeButtons()</script>
+</body></html>

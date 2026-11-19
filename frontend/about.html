@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Roamly</title><meta name="description" content="How Roamly ranks destinations, where its data comes from and how well the model performs."><meta name="theme-color" content="#f4eee1"><link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
+<script src="/js/theme.js?v=3"></script><link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3">
+</head><body>
+<div class="wrap"><header class="nav"><a class="logo" href="/" data-logo></a><div class="right"><button class="icon-btn" data-theme-toggle></button><a class="btn btn-sm btn-ghost" href="/login.html">Log in</a><a class="btn btn-sm btn-primary" href="/signup.html">Get started</a></div></header></div>
+<main class="doc" id="about">
+ <span class="eyebrow">About</span><h1>How Roamly works.</h1>
+ <p class="muted"><span class="spin"></span> Loading</p>
+</main>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script>
+<script>
+$$("[data-logo]").forEach(l => l.innerHTML = Art.brand()); bindThemeButtons();
+(async () => {
+  const box = $("#about"), head = `<span class="eyebrow">About</span><h1>How Roamly works.</h1>`;
+  let m;
+  try { m = await api("/api/model"); } catch (e) { box.innerHTML = head + `<p>Could not load the live numbers right now. Please try again in a moment.</p>`; return; }
+  const u = m.modes || {}, c = u.chat || 0, g = u.guided || 0, tot = c + g || 1, r = m.ranker || {};
+  const row = (k, l) => r[k] ? `<tr><th>${l}</th><td>${r[k].precision_at_3} vs ${r[k].knn_baseline_precision_at_3}</td><td>${r[k].auc}</td></tr>` : "";
+  box.innerHTML = head + `
+   <h2>How trips are ranked</h2><p>Each destination and hotel is scored for your trip type, month, budget level and length by a gradient-boosted model. Results over five days combine nearby cities into a route, and costs are estimated from typical hotel prices and daily spending for your group size.</p>
+   <h2>Which way do people plan?</h2><div class="bars"><div><span>Chat</span><i style="width:${c / tot * 100}%"></i><b>${c}</b></div><div><span>Guided</span><i class="g" style="width:${g / tot * 100}%"></i><b>${g}</b></div></div><p class="small muted">Counts every message sent and guided search run, by all users.</p>
+   <h2>How good is the ranking?</h2>${r.held_out_travellers ? `<table class="kv"><tr><th></th><th>Top-3 hit rate (model vs old method)</th><th>AUC</th></tr>${row("held_out_travellers", "New travellers")}${row("held_out_destinations", "Unseen destinations")}</table>` : `<p class="muted">No metrics yet.</p>`}
+   <p class="small muted">Measured on simulated travellers, so it shows how well the model learned our rules, not how much real people will like a place.</p>
+   <h2>Learning from you</h2><p>${m.likes} thumbs-up and ${m.dislikes} thumbs-down so far, ${m.feedback_with_context} with full trip details. ${r.trained_on_feedback_rows ? `The current model was trained with ${r.trained_on_feedback_rows} of them.` : "The current model uses simulated data only. Once there are at least 20, retraining blends your votes in."}</p>
+   <h2>The data</h2><p>${m.destinations} destinations, ${m.hotels} places to stay and ${m.places} places on the map. Prices, hotel pins and sight coordinates are estimates and should be checked before you book. The assistant runs in <b>${esc(m.chat_mode)}</b> mode.</p>
+   <p class="small"><a href="/privacy.html">Privacy</a> · <a href="/images/destinations/CREDITS.md">Photo credits</a></p>`;
+})();
+</script>
+<style>
+.bars{display:grid;gap:8px;margin:10px 0}.bars div{display:grid;grid-template-columns:90px 1fr 50px;gap:10px;align-items:center;font-size:.9rem}.bars i{display:block;height:12px;border-radius:99px;background:var(--accent);min-width:3px}.bars i.g{background:var(--teal)}
+table.kv{border-collapse:collapse;font-size:.9rem;margin:8px 0}.kv td,.kv th{padding:6px 14px 6px 0;text-align:left;border-bottom:1px solid var(--line)}.kv th{color:var(--mut);font-weight:500}
+</style>
+</body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose a new password · Roamly</title><meta name="robots" content="noindex"><meta name="theme-color" content="#f4eee1">
+<link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
+<script src="/js/theme.js?v=3"></script>
+<link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3">
+</head><body data-page="reset">
+<a class="skip" href="#main">Skip to form</a>
+<div class="auth">
+ <aside class="auth-art" aria-hidden="true"><div data-art="Bruges|romantic"></div><div class="stamp"><div>Est.<b>2026</b>Europe</div></div>
+  <div class="cap"><span class="eyebrow">Roamly</span><h2>A fresh start.</h2><p>Choose a new password. You'll be logged out on other devices.</p></div></aside>
+ <div class="auth-main">
+  <div class="top"><a class="logo" href="/" data-logo></a><button class="icon-btn" data-theme-toggle></button></div>
+  <main id="main" class="auth-box">
+    <h1>Choose a new password</h1><p class="sub">Make it at least 8 characters.</p>
+    <form id="form" novalidate>
+     <div class="form-err" id="formErr" role="alert" hidden></div>
+     <div class="form-ok" id="formOk" role="status" hidden>Your password has been changed. <a href="/login.html">Log in</a> with the new one.</div>
+     <div class="field"><label for="password">New password</label><div class="pwrap"><input id="password" name="password" type="password" autocomplete="new-password" required aria-describedby="e-password"><button type="button" data-toggle="password" aria-label="Show password"></button></div><div class="meter" id="meter" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="hint" id="strength">At least 8 characters.</div><div class="err" id="e-password" role="alert"></div></div>
+     <div class="field"><label for="confirm">Repeat the password</label><div class="pwrap"><input id="confirm" name="confirm" type="password" autocomplete="new-password" required aria-describedby="e-confirm"><button type="button" data-toggle="confirm" aria-label="Show password"></button></div><div class="err" id="e-confirm" role="alert"></div></div>
+     <button class="btn btn-primary btn-block" id="submit">Change password</button>
+    </form>
+    <p class="alt"><a href="/login.html">Back to log in</a></p>
+  </main>
+  <p class="small muted" style="text-align:center">Class project &middot; <a href="/privacy.html">Privacy</a></p>
+ </div>
+</div>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script><script src="/js/auth.js?v=3"></script>
+</body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roamly: plan your Europe trip around your month and your budget</title>
+<meta name="description" content="Tell Roamly when you're going, for how long and what you can spend. Get ranked destinations, a real budget, a day-by-day route, weather and a shareable plan.">
+<meta property="og:title" content="Roamly: Europe, planned around you"><meta property="og:description" content="Ranked destinations, honest budgets, day-by-day routes and weather in one place.">
+<meta property="og:type" content="website"><meta name="theme-color" content="#f4eee1">
+<link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<script src="/js/theme.js?v=3"></script>
+<link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+ <header class="nav">
+  <a class="logo" href="/" id="logo"></a>
+  <nav aria-label="Main"><a href="#how">How it works</a><a href="#try">Try it</a><a href="#destinations">Destinations</a><a href="#faq">FAQ</a><a href="/about.html">About</a></nav>
+  <div class="right"><button class="icon-btn" data-theme-toggle></button><a class="btn btn-sm btn-ghost" href="/login.html">Log in</a><a class="btn btn-sm btn-primary" href="/signup.html">Get started</a></div>
+ </header>
+
+ <main id="main">
+  <section class="hero">
+   <div>
+    <span class="eyebrow">Trip planning for Europe</span>
+    <h1>Europe, <em>planned</em> around you.</h1>
+    <p class="lead">Tell us when you are going, for how long and what you can spend. We rank the cities that fit, build the route, and show the real cost before you book anything.</p>
+    <div class="cta-row"><a class="btn btn-accent" href="/signup.html">Start planning, it's free</a><a class="btn" href="#try">Try it without signing up</a></div>
+    <dl class="facts" id="facts"><div><dt>–</dt><dd>cities</dd></div><div><dt>–</dt><dd>places on the map</dd></div><div><dt>–</dt><dd>stays to compare</dd></div></dl>
+   </div>
+   <div class="postcards" aria-hidden="true">
+    <figure class="postcard"><div data-art="Lisbon|city"></div><figcaption><span>Lisbon</span><span>Portugal</span></figcaption></figure>
+    <figure class="postcard"><div data-art="Santorini|beach"></div><figcaption><span>Santorini</span><span>Greece</span></figcaption></figure>
+    <figure class="postcard"><div data-art="Zermatt|mountain"></div><figcaption><span>Zermatt</span><span>Switzerland</span></figcaption></figure>
+    <div class="stamp"><div>Plan<b>pack, go</b>Europe</div></div>
+   </div>
+  </section>
+
+  <section class="section alt" id="how"><div class="wrap">
+   <div class="section-head"><span class="eyebrow">How it works</span><h2>From "somewhere warm in June" to a day-by-day plan.</h2></div>
+   <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Say what you want</h3><p>Type it the way you would tell a friend, or tap through a few options. Both ways share the same memory, so you can switch whenever you like.</p></div>
+    <div class="step"><div class="n">02</div><h3>Compare real numbers</h3><p>Every match shows how well it fits and an estimated total for your group size and dates, in your own currency.</p></div>
+    <div class="step"><div class="n">03</div><h3>Take the plan with you</h3><p>Get a day-by-day itinerary with road routes, weather and a budget. Save it, share a link or add it to your calendar.</p></div>
+   </div>
+  </div></section>
+
+  <section class="section" id="try"><div class="wrap">
+   <div class="section-head"><span class="eyebrow">Try it now</span><h2>See what fits your trip.</h2><p>This uses the same ranking as the app. No account needed.</p></div>
+   <div class="card try">
+    <div class="controls">
+     <div><div class="label" style="margin-bottom:8px">What kind of trip?</div><div class="row" id="tTypes"></div></div>
+     <div class="field" style="margin:0"><label for="tMonth">When?</label><select id="tMonth"></select></div>
+     <div><div class="label" style="margin-bottom:8px">Budget level</div><div class="row" id="tBud"></div></div>
+     <div class="field" style="margin:0"><label for="tDays">How many days?</label><select id="tDays"><option>3</option><option selected>5</option><option>7</option><option>10</option></select></div>
+    </div>
+    <div class="out" id="tOut" aria-live="polite"><p class="muted">Pick a trip type to see your matches.</p></div>
+   </div>
+  </div></section>
+
+
+  <section class="section" id="destinations"><div class="wrap">
+   <div class="section-head"><span class="eyebrow">Destinations</span><h2>Where could you go?</h2><p>Illustrated for now: drop photos into <code>images/destinations</code> and they replace the artwork automatically.</p></div>
+   <div class="filters" id="dFilters" role="group" aria-label="Filter by trip type"></div>
+   <div class="dgrid" id="dGrid"></div>
+  </div></section>
+
+  <section class="section alt"><div class="wrap">
+   <div class="section-head"><span class="eyebrow">What you get</span><h2>Everything for the trip, in one place.</h2></div>
+   <div class="features" id="features"></div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+   <div class="section-head"><span class="eyebrow">Straight talk</span><h2>What is real, and what is an estimate.</h2></div>
+   <div class="honest">
+    <div><h3>What we do</h3><p>Rank destinations for your trip type, month, budget and length with a model trained for exactly that. Build a day-by-day route from the places in our database. Estimate the total from typical hotel prices and daily spending.</p><p>Every thumbs-up and thumbs-down you give is stored with the trip it was about, so the ranking can be retrained on real opinions.</p></div>
+    <div><h3>What we don't do</h3><p>We don't book anything or check live availability. Prices are estimates from a hand-collected dataset: check them before you pay. Hotel pins on the map are approximate. Flight and hotel buttons open Google Flights and Booking.com searches in a new tab.</p><p>The model was first trained on simulated travellers, so its scores describe how well it learned our rules, not a guarantee that you'll love a place.</p></div>
+   </div>
+  </div></section>
+
+  <section class="section alt" id="faq"><div class="wrap" style="max-width:820px">
+   <div class="section-head"><span class="eyebrow">Questions</span><h2>Good to know.</h2></div>
+   <details class="faq"><summary>Is it free?</summary><p>Yes. There is nothing to pay for. This is a student project, so please treat it as a planning aid and not a booking service.</p></details>
+   <details class="faq"><summary>How accurate are the prices?</summary><p>They are estimates built from typical hotel rates and daily spending in each city. They are good for comparing places and setting a budget, not for quoting a final price.</p></details>
+   <details class="faq"><summary>Do I need an account?</summary><p>You can try the ranking above without one. An account lets you chat, build itineraries, save trips and share links.</p></details>
+   <details class="faq"><summary>Can I switch between chat and the guided pills?</summary><p>Any time. Both write to the same memory, so what you chose in one shows up in the other.</p></details>
+   <details class="faq"><summary>What happens to my data?</summary><p>We store your account, chat memory, saved trips and feedback so the app works. You can download everything or delete your account from Settings. Read the <a href="/privacy.html">privacy page</a> for details.</p></details>
+   <details class="faq"><summary>Can I plan trips outside Europe?</summary><p>Not yet. The dataset covers a set of European cities and the cities are chosen to be easy to combine into routes.</p></details>
+  </div></section>
+
+ </main>
+
+ <div class="endcap">
+  <section class="cta" aria-labelledby="ctaH">
+   <span class="eyebrow">Ready when you are</span>
+   <h2 id="ctaH">Where to <em>next?</em></h2>
+   <p>Tell it your month and budget. Get ranked cities, a real cost and a day-by-day route in about a minute.</p>
+   <div class="cta-btns"><a class="btn btn-accent" href="/signup.html">Start planning, it's free</a><a class="btn btn-light" href="#try">Try it without an account</a></div>
+   <ul class="trust"><li>Free to use</li><li>No card needed</li><li>Delete your data any time</li></ul>
+  </section>
+  <footer class="foot">
+   <div class="foot-top">
+    <div class="foot-brand"><a class="logo" href="/" id="flogo"></a><p>Europe trips planned around your month and your budget. A student project, built with care.</p></div>
+    <nav aria-label="Explore"><h3>Explore</h3><a href="#how">How it works</a><a href="#try">Try it</a><a href="#destinations">Destinations</a><a href="#faq">FAQ</a></nav>
+    <nav aria-label="Project"><h3>Project</h3><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/images/destinations/CREDITS.md">Photo credits</a></nav>
+    <nav aria-label="Account"><h3>Account</h3><a href="/login.html">Log in</a><a href="/signup.html">Sign up</a></nav>
+   </div>
+   <div class="foot-bottom"><span>Illustrations drawn in code. Weather by Open-Meteo. Maps &copy; OpenStreetMap contributors, &copy; CARTO.</span><span>Prices are estimates. Check before you book.</span></div>
+  </footer>
+ </div>
+</div>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script><script src="/js/landing.js?v=3"></script>
+</body></html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forgot password · Roamly</title><meta name="robots" content="noindex"><meta name="theme-color" content="#f4eee1">
+<link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
+<script src="/js/theme.js?v=3"></script>
+<link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3">
+</head><body data-page="forgot">
+<a class="skip" href="#main">Skip to form</a>
+<div class="auth">
+ <aside class="auth-art" aria-hidden="true"><div data-art="Prague|city"></div><div class="stamp"><div>Est.<b>2026</b>Europe</div></div>
+  <div class="cap"><span class="eyebrow">Roamly</span><h2>It happens to everyone.</h2><p>Enter your email and we'll send a link to choose a new password.</p></div></aside>
+ <div class="auth-main">
+  <div class="top"><a class="logo" href="/" data-logo></a><button class="icon-btn" data-theme-toggle></button></div>
+  <main id="main" class="auth-box">
+    <h1>Forgot your password?</h1><p class="sub">Enter the email you signed up with.</p>
+    <form id="form" novalidate>
+     <div class="form-err" id="formErr" role="alert" hidden></div>
+     <div class="form-ok" id="formOk" role="status" hidden>If that email has an account, a reset link is on its way. It works for one hour.<br><span class="small">Running this on your own computer without email set up? The link is printed in the server's console window.</span></div>
+     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email" autofocus><div class="err" id="e-email" role="alert"></div></div>
+     <button class="btn btn-primary btn-block" id="submit">Send reset link</button>
+    </form>
+    <p class="alt"><a href="/login.html">Back to log in</a></p>
+  </main>
+  <p class="small muted" style="text-align:center">Class project &middot; <a href="/privacy.html">Privacy</a></p>
+ </div>
+</div>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script><script src="/js/auth.js?v=3"></script>
+</body></html>

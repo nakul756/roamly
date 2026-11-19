@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan your trip · Roamly</title><meta name="robots" content="noindex"><meta name="theme-color" content="#f4eee1">
+<link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/images/brand/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
+<script src="/js/theme.js?v=3"></script>
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css"><link rel="stylesheet" href="/css/theme.css?v=3"><link rel="stylesheet" href="/css/site.css?v=3"><link rel="stylesheet" href="/css/app.css?v=3">
+</head><body>
+<a class="skip" href="#work">Skip to your trips</a>
+<header class="topbar">
+ <a class="logo" href="/" id="logo"></a>
+ <div class="right">
+  <label class="vh" for="cur">Currency</label><select id="cur"></select>
+  <button class="icon-btn" data-theme-toggle></button>
+  <button class="me" id="meBtn" aria-haspopup="dialog"><span class="av" id="av">?</span><span class="nm" id="meName">Account</span></button>
+ </div>
+</header>
+
+<main class="layout">
+ <section class="panel assist" aria-label="Plan a trip">
+  <div class="seg" role="tablist" aria-label="How do you want to plan?">
+   <button role="tab" id="mChat" aria-selected="true"></button><button role="tab" id="mGuided" aria-selected="false"></button>
+  </div>
+  <div class="mem" id="mem" aria-label="What I remember about your trip"></div>
+
+  <div id="chatView">
+   <div id="log" role="log" aria-live="polite" aria-label="Conversation"></div>
+   <div class="sugg" id="sugg"></div>
+   <form id="f" autocomplete="off"><label class="vh" for="t">Message</label><input id="t" type="text" maxlength="500" placeholder="Describe the trip you have in mind"><button type="button" class="icon-btn" id="mic" aria-label="Speak your message"></button><button class="send" aria-label="Send"></button></form>
+   <div class="foot-actions"><button class="link" id="newChat">Start a new trip</button><span class="muted">Press <kbd>/</kbd> to type</span></div>
+  </div>
+
+  <div id="guidedView" hidden>
+   <div class="gs"><div class="lbl"><b>What kind of trip?</b></div><div class="pills" id="gType" role="group" aria-label="Trip type"></div></div>
+   <div class="gs"><div class="lbl"><b>Who is going?</b><span>travellers</span></div><div class="stepper"><button type="button" id="trMinus" aria-label="Fewer travellers"></button><b id="trN" aria-live="polite">1</b><button type="button" id="trPlus" aria-label="More travellers"></button></div></div>
+   <div class="gs"><div class="lbl"><b>Budget</b><span>optional</span></div><div class="pills" id="gBud" role="group" aria-label="Budget level"></div>
+    <div class="inline"><label class="vh" for="gTotal">Maximum total budget</label><input id="gTotal" type="number" min="0" step="50" placeholder="Max total"><span id="gCur">EUR</span></div></div>
+   <div class="gs"><div class="lbl"><b>When?</b></div><div class="pills" id="gMon" role="group" aria-label="Month"></div></div>
+   <div class="gs"><div class="lbl"><b>How long?</b><span id="dv">5 days</span></div><input id="days" type="range" min="1" max="21" value="5" aria-label="Number of days"></div>
+   <div class="gs"><div class="lbl"><b>Pace</b></div><div class="pills" id="gPace" role="group" aria-label="Pace"></div>
+    <label class="check" style="display:flex;gap:9px;align-items:center;margin-top:12px;font-size:.92rem;color:var(--ink-2)"><input type="checkbox" id="gCrowd"> Avoid crowded places</label></div>
+   <div class="gerr" id="gerr" role="alert"></div>
+   <div style="display:flex;gap:10px"><button class="btn btn-accent" id="go" style="flex:1">Find trips</button><button class="btn" id="surprise" type="button"></button></div>
+  </div>
+ </section>
+
+ <section class="panel" id="work" aria-label="Your trips">
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="tab" id="results" role="tabpanel"></div>
+  <div class="tab" id="plan" role="tabpanel" hidden></div>
+  <div class="tab" id="saved" role="tabpanel" hidden></div>
+  <div class="tab" id="compare" role="tabpanel" hidden></div>
+ </section>
+</main>
+
+<dialog id="settings" aria-labelledby="sTitle"><div class="dlg">
+ <button class="icon-btn x" id="sClose" aria-label="Close settings"></button>
+ <h2 id="sTitle">Settings</h2><p class="muted small" id="sWho"></p>
+ <div class="sec"><h3>Preferences</h3>
+  <div class="two"><div class="field"><label for="sCur">Currency</label><select id="sCur"></select></div><div class="field"><label for="sRate">1 euro equals</label><input id="sRate" type="number" step="0.01" min="0.0001"></div></div>
+  <p class="hint" id="sRateNote" style="margin:-8px 0 14px"></p>
+  <div class="two"><div class="field"><label for="sHome">Home airport (for flight links)</label><input id="sHome" type="text" maxlength="3" placeholder="e.g. LHR" style="text-transform:uppercase"></div>
+   <div class="field"><label for="sTheme">Colour theme</label><select id="sTheme"><option value="auto">Match my device</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div>
+ </div>
+ <div class="sec"><h3>Profile</h3><form id="sName"><div class="field"><label for="sNameIn">Name</label><input id="sNameIn" type="text" maxlength="60" required></div><button class="btn btn-sm btn-primary">Save name</button> <span class="ok" id="sNameOk" role="status"></span></form></div>
+ <div class="sec"><h3>Password</h3><form id="sPw"><div class="field"><label for="sPwOld">Current password</label><input id="sPwOld" type="password" autocomplete="current-password" required></div>
+  <div class="field"><label for="sPwNew">New password</label><input id="sPwNew" type="password" autocomplete="new-password" required minlength="8"></div><div class="err" id="sPwErr" role="alert"></div>
+  <button class="btn btn-sm btn-primary">Change password</button> <span class="ok" id="sPwOk" role="status"></span></form></div>
+ <div class="sec"><h3>Your data</h3><p class="muted small" style="margin-bottom:12px">Download your account details, chat, saved trips and feedback as a single file.</p><button class="btn btn-sm" id="sExport"></button></div>
+ <div class="sec"><h3 class="danger">Delete account</h3><p class="muted small" style="margin-bottom:12px">This permanently removes your account, trips, chat, feedback and share links.</p>
+  <form id="sDel"><div class="field"><label for="sDelPw">Confirm with your password</label><input id="sDelPw" type="password" autocomplete="current-password" required></div><div class="err" id="sDelErr" role="alert"></div><button class="btn btn-sm btn-danger">Delete my account</button></form></div>
+ <div class="sec" id="sAdmin" hidden><h3>Admin</h3><p class="muted small" style="margin-bottom:12px">Retrain the ranking model with the feedback collected so far.</p><button class="btn btn-sm" id="retrain">Retrain the ranking now</button></div>
+ <div class="sec"><p class="muted small" style="margin-bottom:12px"><a href="/about.html">How Roamly works</a> · <a href="/privacy.html">Privacy</a> · <a href="/images/destinations/CREDITS.md">Photo credits</a></p><button class="btn" id="sOut">Log out</button></div>
+</div></dialog>
+
+<script src="/vendor/leaflet/leaflet.js"></script>
+<script src="/js/art.js?v=3"></script><script src="/js/core.js?v=3"></script><script src="/js/map.js?v=3"></script><script src="/js/app.js?v=3"></script>
+</body></html>
